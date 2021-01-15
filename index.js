@@ -26,7 +26,7 @@
 //   });
 // });
 
-const { nextISSTimesForMyLocation } = require('./iss');
+const { nextISSTimesForMyLocation, printPassTimes } = require('./iss');
 
 nextISSTimesForMyLocation((error, passTimes) => {
   if (error) {
@@ -34,9 +34,7 @@ nextISSTimesForMyLocation((error, passTimes) => {
     return;
   }
 
-  for (let pass of passTimes) {
-    let date = new Date(0);
-    date.setUTCSeconds(pass.risetime);
-    console.log(`Next pass at ${date} for ${pass.duration} seconds!`);
-  }
+  printPassTimes(passTimes)
 });
+
+module.exports = { printPassTimes };
