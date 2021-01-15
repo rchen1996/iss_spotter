@@ -91,4 +91,12 @@ const nextISSTimesForMyLocation = function (callback) {
   });
 };
 
-module.exports = { nextISSTimesForMyLocation };
+const printPassTimes = function(passTimes) {
+  for (let pass of passTimes) {
+    let date = new Date(0);
+    date.setUTCSeconds(pass.risetime);
+    console.log(`Next pass at ${date} for ${pass.duration} seconds!`);
+  }
+};
+
+module.exports = { nextISSTimesForMyLocation, printPassTimes };
